@@ -8,10 +8,10 @@ const bodyParser = require('./koa-bodyparser');
 const static = require('./koa-static');
 
 
-// 当用户访问/login的时候 get  => 返回一个登录页
-app.use(bodyParser(path.resolve(__dirname,'upload')));
+// // 当用户访问/login的时候 get  => 返回一个登录页
+// app.use(bodyParser(path.resolve(__dirname,'upload')));
 
-// 当用户访问/login  post => 做登录操作
+// // 当用户访问/login  post => 做登录操作
 
 app.use(async (ctx, next) => {
     if (ctx.path === '/login' && ctx.method == 'POST') {
@@ -24,7 +24,7 @@ app.use(async (ctx, next) => {
 })
 
 // 静态文件服务中间件 处理静态资源的
-app.use(static(path.resolve(__dirname,'koa')))
 app.use(static(__dirname));
+app.use(static(path.resolve(__dirname,'koa')))
 
 app.listen(3000);
